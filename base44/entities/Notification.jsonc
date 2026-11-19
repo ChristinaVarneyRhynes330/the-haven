@@ -1,0 +1,59 @@
+{
+  "name": "Notification",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "reminder",
+        "briefing",
+        "system",
+        "review"
+      ],
+      "enumColors": [
+        "yellow",
+        "blue",
+        "gray",
+        "purple"
+      ]
+    },
+    "route": {
+      "type": "string"
+    },
+    "read": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "title"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

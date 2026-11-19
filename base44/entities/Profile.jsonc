@@ -1,0 +1,164 @@
+{
+  "name": "Profile",
+  "type": "object",
+  "properties": {
+    "preferred_name": {
+      "type": "string"
+    },
+    "timezone": {
+      "type": "string"
+    },
+    "wake_time": {
+      "type": "string"
+    },
+    "bed_time": {
+      "type": "string"
+    },
+    "work_start": {
+      "type": "string"
+    },
+    "work_end": {
+      "type": "string"
+    },
+    "planning_mode": {
+      "type": "string",
+      "enum": [
+        "time",
+        "priority",
+        "energy",
+        "category"
+      ],
+      "enumColors": [
+        "blue",
+        "red",
+        "green",
+        "purple"
+      ]
+    },
+    "guidance_style": {
+      "type": "string",
+      "enum": [
+        "gentle",
+        "direct"
+      ],
+      "enumColors": [
+        "green",
+        "blue"
+      ]
+    },
+    "list_tolerance": {
+      "type": "string",
+      "enum": [
+        "loves_lists",
+        "neutral",
+        "overwhelmed_by_lists"
+      ],
+      "enumColors": [
+        "green",
+        "gray",
+        "red"
+      ]
+    },
+    "peak_focus": {
+      "type": "string",
+      "enum": [
+        "early_morning",
+        "morning",
+        "afternoon",
+        "evening",
+        "night"
+      ],
+      "enumColors": [
+        "yellow",
+        "blue",
+        "green",
+        "purple",
+        "gray"
+      ]
+    },
+    "reminder_style": {
+      "type": "string",
+      "enum": [
+        "gentle",
+        "firm",
+        "minimal"
+      ],
+      "enumColors": [
+        "green",
+        "yellow",
+        "gray"
+      ]
+    },
+    "morning_flow_enabled": {
+      "type": "boolean"
+    },
+    "evening_reset_enabled": {
+      "type": "boolean"
+    },
+    "show_affirmations": {
+      "type": "boolean"
+    },
+    "affirmation_categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notifications_in_app": {
+      "type": "boolean"
+    },
+    "notifications_email": {
+      "type": "boolean"
+    },
+    "reduced_motion": {
+      "type": "boolean"
+    },
+    "larger_text": {
+      "type": "boolean"
+    },
+    "high_contrast": {
+      "type": "boolean"
+    },
+    "hardest_areas": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "goals_now": {
+      "type": "string"
+    },
+    "onboarding_complete": {
+      "type": "boolean"
+    },
+    "ai_personalization_paused": {
+      "type": "boolean"
+    },
+    "last_weekly_reset": {
+      "type": "string"
+    }
+  },
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

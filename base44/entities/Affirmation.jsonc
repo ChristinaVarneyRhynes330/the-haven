@@ -1,0 +1,50 @@
+{
+  "name": "Affirmation",
+  "type": "object",
+  "properties": {
+    "text": {
+      "type": "string"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "favorite": {
+      "type": "boolean"
+    },
+    "custom": {
+      "type": "boolean"
+    },
+    "active": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "text"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

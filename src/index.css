@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+
+    /* Warm paper foundation, deep ink text */
+    --background: 40 26% 97%;
+    --foreground: 195 15% 12%;
+    --card: 40 33% 99%;
+    --card-foreground: 195 15% 12%;
+    --popover: 40 33% 99%;
+    --popover-foreground: 195 15% 12%;
+    --primary: 178 40% 23%;
+    --primary-foreground: 40 33% 98%;
+    --secondary: 40 18% 93%;
+    --secondary-foreground: 195 15% 18%;
+    --muted: 40 15% 93%;
+    --muted-foreground: 195 8% 40%;
+    --accent: 40 22% 90%;
+    --accent-foreground: 195 15% 18%;
+    --destructive: 4 52% 44%;
+    --destructive-foreground: 40 33% 98%;
+    --border: 38 13% 86%;
+    --input: 38 13% 86%;
+    --ring: 178 40% 30%;
+
+    --chart-1: 178 40% 30%;
+    --chart-2: 145 18% 38%;
+    --chart-3: 36 36% 46%;
+    --chart-4: 288 20% 44%;
+    --chart-5: 205 30% 44%;
+
+    --radius: 1rem;
+
+    --font-heading: 'Newsreader', Georgia, 'Times New Roman', serif;
+    --font-display: 'Newsreader', Georgia, 'Times New Roman', serif;
+    --font-body: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+    /* Life Area palette — muted, contrast checked on paper */
+    --area-sage: 145 18% 38%;
+    --area-clay: 18 38% 42%;
+    --area-sky: 205 34% 40%;
+    --area-plum: 288 20% 44%;
+    --area-sand: 34 36% 38%;
+    --area-slate: 205 10% 38%;
+    --area-rose: 345 32% 44%;
+    --area-moss: 78 26% 32%;
+    --area-indigo: 240 22% 46%;
+    --area-ember: 12 44% 44%;
+
+    --sidebar-background: 40 30% 99%;
+    --sidebar-foreground: 195 15% 16%;
+    --sidebar-primary: 178 40% 23%;
+    --sidebar-primary-foreground: 40 33% 98%;
+    --sidebar-accent: 40 18% 93%;
+    --sidebar-accent-foreground: 195 15% 16%;
+    --sidebar-border: 38 13% 88%;
+    --sidebar-ring: 178 40% 30%;
+  }
+
+  .dark {
+    color-scheme: dark;
+
+    --background: 200 14% 7%;
+    --foreground: 40 18% 93%;
+    --card: 200 13% 10%;
+    --card-foreground: 40 18% 93%;
+    --popover: 200 13% 10%;
+    --popover-foreground: 40 18% 93%;
+    --primary: 174 38% 56%;
+    --primary-foreground: 200 30% 8%;
+    --secondary: 200 10% 15%;
+    --secondary-foreground: 40 18% 93%;
+    --muted: 200 10% 15%;
+    --muted-foreground: 200 8% 62%;
+    --accent: 200 10% 18%;
+    --accent-foreground: 40 18% 93%;
+    --destructive: 4 48% 52%;
+    --destructive-foreground: 40 18% 96%;
+    --border: 200 9% 19%;
+    --input: 200 9% 19%;
+    --ring: 174 38% 48%;
+
+    --chart-1: 174 38% 56%;
+    --chart-2: 145 22% 62%;
+    --chart-3: 36 30% 62%;
+    --chart-4: 288 22% 64%;
+    --chart-5: 205 28% 62%;
+
+    --area-sage: 145 22% 62%;
+    --area-clay: 18 40% 62%;
+    --area-sky: 205 34% 62%;
+    --area-plum: 288 24% 66%;
+    --area-sand: 34 34% 58%;
+    --area-slate: 205 12% 60%;
+    --area-rose: 345 34% 64%;
+    --area-moss: 78 26% 52%;
+    --area-indigo: 240 24% 68%;
+    --area-ember: 12 44% 62%;
+
+    --sidebar-background: 200 13% 9%;
+    --sidebar-foreground: 40 18% 90%;
+    --sidebar-primary: 174 38% 56%;
+    --sidebar-primary-foreground: 200 30% 8%;
+    --sidebar-accent: 200 10% 15%;
+    --sidebar-accent-foreground: 40 18% 90%;
+    --sidebar-border: 200 9% 17%;
+    --sidebar-ring: 174 38% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+  }
+
+  ::selection {
+    background-color: hsl(var(--primary) / 0.16);
+  }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  input, textarea, button, select {
+    font-family: inherit;
+  }
+
+  /* Honour larger system text without breaking layout */
+  @media (min-resolution: 1dppx) {
+    body {
+      font-size: 100%;
+    }
+  }
+}
+
+@layer utilities {
+  .eyebrow {
+    @apply text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground;
+  }
+
+  .hairline {
+    @apply border-border/70;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .sr-only-focusable:not(:focus):not(:focus-within) {
+    @apply sr-only;
+  }
+
+  .safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

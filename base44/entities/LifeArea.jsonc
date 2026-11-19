@@ -1,0 +1,77 @@
+{
+  "name": "LifeArea",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "tone": {
+      "type": "string",
+      "enum": [
+        "sage",
+        "clay",
+        "sky",
+        "plum",
+        "sand",
+        "slate",
+        "rose",
+        "moss",
+        "indigo",
+        "ember"
+      ],
+      "enumColors": [
+        "green",
+        "yellow",
+        "blue",
+        "purple",
+        "yellow",
+        "gray",
+        "pink",
+        "green",
+        "blue",
+        "red"
+      ]
+    },
+    "icon": {
+      "type": "string"
+    },
+    "order": {
+      "type": "number"
+    },
+    "hidden": {
+      "type": "boolean"
+    },
+    "archived": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

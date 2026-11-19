@@ -1,0 +1,95 @@
+{
+  "name": "Event",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "area_id": {
+      "type": "string"
+    },
+    "start_at": {
+      "type": "string"
+    },
+    "end_at": {
+      "type": "string"
+    },
+    "all_day": {
+      "type": "boolean"
+    },
+    "location": {
+      "type": "string"
+    },
+    "meeting_link": {
+      "type": "string"
+    },
+    "attendees": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "prep_min": {
+      "type": "number"
+    },
+    "travel_min": {
+      "type": "number"
+    },
+    "reminder_at": {
+      "type": "string"
+    },
+    "recurrence": {
+      "type": "string",
+      "enum": [
+        "none",
+        "daily",
+        "weekly",
+        "monthly",
+        "yearly"
+      ],
+      "enumColors": [
+        "gray",
+        "blue",
+        "purple",
+        "green",
+        "yellow"
+      ]
+    },
+    "related_task_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "title",
+    "start_at"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

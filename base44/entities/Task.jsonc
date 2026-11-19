@@ -1,0 +1,153 @@
+{
+  "name": "Task",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "area_id": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "must",
+        "should",
+        "could",
+        "quick",
+        "waiting",
+        "future"
+      ],
+      "enumColors": [
+        "red",
+        "yellow",
+        "blue",
+        "green",
+        "purple",
+        "gray"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "open",
+        "done",
+        "archived"
+      ],
+      "enumColors": [
+        "blue",
+        "green",
+        "gray"
+      ]
+    },
+    "due_date": {
+      "type": "string"
+    },
+    "start_date": {
+      "type": "string"
+    },
+    "estimate_min": {
+      "type": "number"
+    },
+    "energy": {
+      "type": "string",
+      "enum": [
+        "very_low",
+        "low",
+        "moderate",
+        "high",
+        "deep"
+      ],
+      "enumColors": [
+        "gray",
+        "green",
+        "blue",
+        "yellow",
+        "purple"
+      ]
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "subtasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "done": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "notes": {
+      "type": "string"
+    },
+    "reminder_at": {
+      "type": "string"
+    },
+    "waiting_on": {
+      "type": "string"
+    },
+    "postponed_count": {
+      "type": "number"
+    },
+    "sort_order": {
+      "type": "number"
+    },
+    "completed_at": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "manual",
+        "brain_dump",
+        "assistant"
+      ],
+      "enumColors": [
+        "gray",
+        "purple",
+        "blue"
+      ]
+    }
+  },
+  "required": [
+    "title"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

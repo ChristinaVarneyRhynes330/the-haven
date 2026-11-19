@@ -1,0 +1,60 @@
+{
+  "name": "BrainDump",
+  "type": "object",
+  "properties": {
+    "raw_text": {
+      "type": "string"
+    },
+    "input_type": {
+      "type": "string",
+      "enum": [
+        "text",
+        "voice"
+      ],
+      "enumColors": [
+        "gray",
+        "purple"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "reviewed"
+      ],
+      "enumColors": [
+        "yellow",
+        "green"
+      ]
+    },
+    "item_count": {
+      "type": "number"
+    },
+    "reviewed_at": {
+      "type": "string"
+    }
+  },
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

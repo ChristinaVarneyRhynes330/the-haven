@@ -1,0 +1,124 @@
+{
+  "name": "Proposal",
+  "type": "object",
+  "properties": {
+    "source": {
+      "type": "string",
+      "enum": [
+        "brain_dump",
+        "assistant"
+      ],
+      "enumColors": [
+        "purple",
+        "blue"
+      ]
+    },
+    "dump_id": {
+      "type": "string"
+    },
+    "conversation_id": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "task",
+        "appointment",
+        "reminder",
+        "note",
+        "idea",
+        "goal",
+        "shopping",
+        "deadline",
+        "question",
+        "follow_up",
+        "decision"
+      ],
+      "enumColors": [
+        "blue",
+        "purple",
+        "yellow",
+        "gray",
+        "pink",
+        "green",
+        "yellow",
+        "red",
+        "gray",
+        "purple",
+        "blue"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "detail": {
+      "type": "string"
+    },
+    "reason": {
+      "type": "string"
+    },
+    "area_id": {
+      "type": "string"
+    },
+    "due_date": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "string"
+    },
+    "energy": {
+      "type": "string"
+    },
+    "estimate_min": {
+      "type": "number"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "approved",
+        "ignored"
+      ],
+      "enumColors": [
+        "yellow",
+        "green",
+        "gray"
+      ]
+    },
+    "created_record_type": {
+      "type": "string"
+    },
+    "created_record_id": {
+      "type": "string"
+    },
+    "order_index": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "title"
+  ],
+  "rls": {
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}
